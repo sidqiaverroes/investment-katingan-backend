@@ -10,6 +10,7 @@ const connectDB = require("./config/database");
 const errorHandler = require("./middleware/errorHandler");
 
 const userRoute = require("./routes/userRoute");
+const productRoute = require("./routes/productRoute");
 
 //connect to database
 connectDB();
@@ -28,6 +29,7 @@ app.use(
 
 //routes
 app.use("/api/users", userRoute);
+app.use("/api/products", productRoute);
 
 app.use("/", (req, res) => {
   res.send("Welcome to Katingan Investment");
