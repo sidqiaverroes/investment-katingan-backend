@@ -82,7 +82,6 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error("User not found, please register");
   }
 
-  console.log(user.password);
   //Check is password correct
   const passIsCorrect = await bcrypt.compare(password, user.password);
 
