@@ -94,6 +94,7 @@ const loginUser = asyncHandler(async (req, res) => {
     httpOnly: true,
     expires: new Date(Date.now() + 1000 * 86400), //1 day
     sameSite: "none",
+    secure: true,
   });
 
   if (user && passIsCorrect) {
@@ -183,7 +184,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
   <a href=${resetUrl} clicktracking=off>${resetUrl}</a>
 
   <p>Regards...</p>
-  <p>IVT Team</p>
+  <p>Katingan Team</p>
 `;
 
   const subject = "Password Reset Request";
