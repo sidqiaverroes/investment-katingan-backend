@@ -2,13 +2,13 @@
   "name": "investment-katingan-be",
   "description": "This is the backend of Katingan Investment Website",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.js",
   "engines": {
     "node": "14.x"
   },
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
