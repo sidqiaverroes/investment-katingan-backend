@@ -3,6 +3,9 @@
   "description": "This is the backend of Katingan Investment Website",
   "version": "1.0.0",
   "main": "server.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
