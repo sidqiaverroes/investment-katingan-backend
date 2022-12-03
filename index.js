@@ -32,7 +32,7 @@ app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
 
 app.use("/", (req, res) => {
-  res.send("Welcome to Katingan Investment");
+  res.send("Welcome to Katingan Investment")
 });
 
 app.use(errorHandler);
