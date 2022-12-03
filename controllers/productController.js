@@ -1,9 +1,11 @@
 const Product = require("../models/productModel");
 const asyncHandler = require("express-async-handler");
+const { fileSizeFormatter } = require("../utils/uploadFile");
+const cloudinary = require("cloudinary").v2;
 
 //CREATE PRODUCT -----------------------------
 const createProduct = asyncHandler(async (req, res) => {
-  const { name, location, landArea, production } = req.body;
+  const { name, location, landArea, production, image } = req.body;
 
   //Validation
   if (!name || !location || !landArea || !production) {
@@ -17,6 +19,7 @@ const createProduct = asyncHandler(async (req, res) => {
       location,
       landArea,
       production,
+      image,
     });
 
     res.status(201).json(newProduct);
