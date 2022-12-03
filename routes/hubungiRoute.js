@@ -1,7 +1,7 @@
 const express = require("express");
-const { contactUs } = require("../controllers/contactController");
+const { hubungi } = require("../controllers/hubungiController");
 const router = express.Router();
 
-router.post("/", contactUs);
+router.post("/", hubungi);
 
 module.exports = router;
