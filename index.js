@@ -11,6 +11,7 @@ const errorHandler = require("./middleware/errorHandler");
 
 const userRoute = require("./routes/userRoute");
 const productRoute = require("./routes/productRoute");
+const hubungiRoute = require("./routes/hubungiRoute");
 
 //connect to database
 connectDB();
@@ -30,9 +31,10 @@ app.use(
 //routes
 app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
+app.use("/api/contactus", hubungiRoute);
 
 app.use("/", (req, res) => {
-  res.send("Welcome to Katingan Investment")
+  res.send("Welcome to Katingan Investment");
 });
 
 app.use(errorHandler);
