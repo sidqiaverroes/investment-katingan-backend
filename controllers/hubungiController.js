@@ -5,9 +5,9 @@ const hubungi = asyncHandler(async (req, res) => {
   const { name, email, subjek, pesan } = req.body;
 
   //   Validation
-  if (!subject || !message) {
+  if (!email || !subjek || !pesan) {
     res.status(400);
-    throw new Error("Please add subject and message");
+    throw new Error("Please fill all the fields");
   }
 
   const send_to = process.env.EMAIL_USER;
