@@ -11,6 +11,7 @@ const errorHandler = require("./middleware/errorHandler");
 
 const userRoute = require("./routes/userRoute");
 const productRoute = require("./routes/productRoute");
+const investRoute = require("./routes/investRoute");
 const hubungiRoute = require("./routes/hubungiRoute");
 
 //connect to database
@@ -31,6 +32,7 @@ app.use(
 //routes
 app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
+app.use("/api/invest", investRoute);
 app.use("/api/contactus", hubungiRoute);
 
 app.use("/", (req, res) => {

@@ -13,7 +13,7 @@ const protect = require("../middleware/protect");
 
 router.post("/", protect, createProduct);
 router.get("/", getProducts);
-router.get("/:id", protect, getProduct);
+router.get("/:id", getProduct);
 router.delete("/:id", protect, deleteProduct);
 router.patch("/:id", protect, updateProduct);
 
