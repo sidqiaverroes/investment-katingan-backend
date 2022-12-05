@@ -11,7 +11,7 @@ const hubungi = asyncHandler(async (req, res) => {
   }
 
   const send_to = process.env.EMAIL_USER;
-  const sent_from = email;
+  const sent_from = process.env.EMAIL_USER;
   const reply_to = email;
   const subject = subjek;
   const message = pesan;
