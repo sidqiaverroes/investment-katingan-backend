@@ -15,7 +15,8 @@ const createNews = asyncHandler(async (req, res) => {
     const newNews = await News.create({
       title,
       desc,
-      createdAt: Date.now(),
+      createdAt,
+      editedAt,
       image,
     });
 
