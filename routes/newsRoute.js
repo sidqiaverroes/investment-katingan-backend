@@ -11,7 +11,7 @@ const {
 
 const protect = require("../middleware/protect");
 
-router.post("/", createNews);
+router.post("/", protect, createNews);
 router.get("/", getNews);
 router.get("/:id", getOneNews);
 router.delete("/:id", protect, deleteNews);
