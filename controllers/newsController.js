@@ -63,13 +63,13 @@ const updateNews = asyncHandler(async (req, res) => {
 
   const news = await News.findById(id);
 
-  if (!News) {
+  if (!news) {
     res.status(404);
     throw new Error("News not found");
   }
   const { title, desc, image } = req.body;
 
-  const updatedNews = await news.findByIdAndUpdate(
+  const updatedNews = await News.findByIdAndUpdate(
     { _id: id },
     {
       title,
