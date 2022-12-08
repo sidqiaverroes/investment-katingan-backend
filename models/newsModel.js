@@ -1,22 +1,23 @@
 const mongoose = require("mongoose");
 
-const productSchema = mongoose.Schema(
+const newsSchema = mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
       required: [true, "Please add name"],
     },
-    location: {
+    desc: {
       type: String,
       required: [true, "Please add the location"],
     },
-    landArea: {
-      type: String,
-      required: [true, "Please add land area"],
+    createdAt: {
+      type: Date,
+      required: true,
     },
-    production: {
-      type: String,
-      required: [true, "Please add production information"],
+    editedAt: {
+      type: Date,
+      required: true,
+      default: "Has not been edited",
     },
     image: {
       type: String,
@@ -29,4 +30,4 @@ const productSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Product", productSchema);
+module.exports = mongoose.model("News", newsSchema);
