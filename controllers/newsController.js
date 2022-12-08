@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 
 //CREATE NEWS -----------------------------
 const createNews = asyncHandler(async (req, res) => {
-  const { title, desc, image } = req.body;
+  const { title, desc, createdAt, editedAt, image } = req.body;
 
   //Validation
   if (!title || !desc) {
@@ -15,7 +15,7 @@ const createNews = asyncHandler(async (req, res) => {
     const newNews = await News.create({
       title,
       desc,
-      createdAt,
+      createdAt: Date.now(),
       editedAt,
       image,
     });
@@ -23,7 +23,7 @@ const createNews = asyncHandler(async (req, res) => {
     res.status(201).json(newNews);
   } catch (error) {
     res.status(500);
-    throw new Error("Error, please try again");
+    throw new Error(error, "Error, please try again");
   }
 });
 

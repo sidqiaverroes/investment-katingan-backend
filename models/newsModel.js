@@ -17,7 +17,7 @@ const newsSchema = mongoose.Schema(
     editedAt: {
       type: Date,
       required: true,
-      default: "Has not been edited",
+      default: Date.now(),
     },
     image: {
       type: String,
