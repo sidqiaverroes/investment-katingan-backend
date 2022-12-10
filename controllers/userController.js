@@ -103,6 +103,10 @@ const loginUser = asyncHandler(async (req, res) => {
       _id,
       name,
       email,
+      nip,
+      jabatan,
+      unitKerja,
+      photo,
       token,
     });
   } else {
@@ -231,6 +235,56 @@ const resetPassword = asyncHandler(async (req, res) => {
   });
 });
 
+// Get User Data
+const getUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    const { _id, name, email, nip, jabatan, unitKerja, photo } = user;
+    res.status(200).json({
+      _id,
+      name,
+      email,
+      nip,
+      jabatan,
+      unitKerja,
+      photo,
+    });
+  } else {
+    res.status(400);
+    throw new Error("User Not Found");
+  }
+});
+
+// Update User
+const updateUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    const { name, email, nip, jabatan, unitKerja, photo } = user;
+    user.email = email;
+    user.name = req.body.name || name;
+    user.nip = req.body.nip || nip;
+    user.jabatan = req.body.jabatan || jabatan;
+    user.unitKerja = req.body.unitKerja || unitKerja;
+    user.photo = req.body.photo || photo;
+
+    const updatedUser = await user.save();
+    res.status(200).json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      photo: updatedUser.photo,
+      nip: updatedUser.nip,
+      jabatan: updatedUser.jabatan,
+      unitKerja: updatedUser.unitKerja,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
 module.exports = {
   registerUser,
   loginUser,
@@ -238,4 +292,6 @@ module.exports = {
   loginStatus,
   forgotPassword,
   resetPassword,
+  getUser,
+  updateUser,
 };

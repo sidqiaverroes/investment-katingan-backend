@@ -8,6 +8,8 @@ const {
   loginStatus,
   forgotPassword,
   resetPassword,
+  getUser,
+  updateUser,
 } = require("../controllers/userController");
 
 router.post("/register", registerUser);
@@ -16,5 +18,7 @@ router.get("/loginstatus", loginStatus);
 router.post("/logout", logoutUser);
 router.post("/forgotpassword", forgotPassword);
 router.put("/resetpassword/:resetToken", resetPassword);
+router.get("/getuser", protect, getUser);
+router.patch("/updateuser", protect, updateUser);
 
 module.exports = router;

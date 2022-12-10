@@ -22,6 +22,23 @@ const userSchema = mongoose.Schema(
       required: [true, "Please add a password"],
       minLength: [6, "Password at least has 6 characters"],
     },
+    nip: {
+      type: Number,
+      min: 18,
+      max: 18,
+      unique: true,
+    },
+    jabatan: {
+      type: String,
+    },
+    unitKerja: {
+      type: String,
+    },
+    photo: {
+      type: String,
+      required: [true, "Please add a photo"],
+      default: "https://i.ibb.co/4pDNDk1/avatar.png",
+    },
   },
   {
     timestamps: true,
