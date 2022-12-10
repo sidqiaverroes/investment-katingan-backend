@@ -24,8 +24,8 @@ const userSchema = mongoose.Schema(
     },
     nip: {
       type: Number,
-      min: 18,
-      max: 18,
+      min: [18, "NIP must be 18 digits number"],
+      max: [18, "NIP must be 18 digits number"],
       unique: true,
     },
     jabatan: {
