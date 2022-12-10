@@ -23,9 +23,9 @@ const userSchema = mongoose.Schema(
       minLength: [6, "Password at least has 6 characters"],
     },
     nip: {
-      type: Number,
-      min: [18, "NIP must be 18 digits number"],
-      max: [18, "NIP must be 18 digits number"],
+      type: String,
+      minLength: [18, "NIP must be 18 digits"],
+      maxLength: [18, "NIP must be 18 digits"],
       unique: true,
     },
     jabatan: {
