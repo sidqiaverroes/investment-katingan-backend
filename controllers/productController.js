@@ -1,4 +1,5 @@
 const Product = require("../models/productModel");
+const User = require("../models/userModel");
 const asyncHandler = require("express-async-handler");
 
 //CREATE PRODUCT -----------------------------
@@ -60,7 +61,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 //UPDATE PRODUCT --------------------------
 const updateProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
-
+  const user = await User.findById(req.user._id);
   const product = await Product.findById(id);
 
   if (!product) {
@@ -76,6 +77,7 @@ const updateProduct = asyncHandler(async (req, res) => {
       location,
       landArea,
       production,
+      editedBy: user.name,
       image,
     }
   );

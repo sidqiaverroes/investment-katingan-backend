@@ -18,6 +18,11 @@ const productSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add production information"],
     },
+    editedBy: {
+      type: String,
+      required: true,
+      default: "-",
+    },
     image: {
       type: String,
       required: [true, "Please add an image"],
