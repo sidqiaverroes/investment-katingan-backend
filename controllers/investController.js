@@ -1,4 +1,5 @@
 const Invest = require("../models/investModel");
+const User = require("../models/userModel");
 const asyncHandler = require("express-async-handler");
 
 //CREATE INVESTMENT -----------------------------
@@ -61,7 +62,7 @@ const deleteInvest = asyncHandler(async (req, res) => {
 //UPDATE INVESTMENT --------------------------
 const updateInvest = asyncHandler(async (req, res) => {
   const { id } = req.params;
-
+  const user = await User.findById(req.user._id);
   const invest = await Invest.findById(id);
 
   if (!invest) {
@@ -78,6 +79,7 @@ const updateInvest = asyncHandler(async (req, res) => {
       cost,
       mapLink,
       desc,
+      editedBy: user.name,
       image,
     }
   );

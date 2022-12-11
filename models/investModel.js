@@ -22,6 +22,11 @@ const investSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add map link"],
     },
+    editedBy: {
+      type: String,
+      required: true,
+      default: "-",
+    },
     image: {
       type: String,
       required: [true, "Please add an image"],
