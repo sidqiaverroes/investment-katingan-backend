@@ -240,7 +240,8 @@ const getUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
   if (user) {
-    const { _id, name, email, nip, jabatan, unitKerja, photo } = user;
+    const { _id, name, email, nip, jabatan, unitKerja, photo, createdAt } =
+      user;
     res.status(200).json({
       _id,
       name,
@@ -249,6 +250,7 @@ const getUser = asyncHandler(async (req, res) => {
       jabatan,
       unitKerja,
       photo,
+      createdAt,
     });
   } else {
     res.status(400);
