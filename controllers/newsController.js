@@ -1,9 +1,10 @@
 const News = require("../models/newsModel");
+const User = require("../models/userModel");
 const asyncHandler = require("express-async-handler");
 
 //CREATE NEWS -----------------------------
 const createNews = asyncHandler(async (req, res) => {
-  const { title, desc, createdAt, editedAt, image } = req.body;
+  const { title, desc, editedBy, image } = req.body;
 
   //Validation
   if (!title || !desc) {
@@ -15,8 +16,7 @@ const createNews = asyncHandler(async (req, res) => {
     const newNews = await News.create({
       title,
       desc,
-      createdAt: Date.now(),
-      editedAt,
+      editedBy,
       image,
     });
 
@@ -60,6 +60,7 @@ const deleteNews = asyncHandler(async (req, res) => {
 //UPDATE NEWS --------------------------
 const updateNews = asyncHandler(async (req, res) => {
   const { id } = req.params;
+  const user = await User.findById(req.user._id);
 
   const news = await News.findById(id);
 
@@ -74,7 +75,7 @@ const updateNews = asyncHandler(async (req, res) => {
     {
       title,
       desc,
-      editedAt: Date.now(),
+      editedBy: user.name,
       image,
     }
   );

@@ -8,16 +8,12 @@ const newsSchema = mongoose.Schema(
     },
     desc: {
       type: String,
-      required: [true, "Please add the location"],
+      required: [true, "Please add the description"],
     },
-    createdAt: {
-      type: Date,
+    editedBy: {
+      type: String,
       required: true,
-    },
-    editedAt: {
-      type: Date,
-      required: true,
-      default: Date.now(),
+      default: "-",
     },
     image: {
       type: String,
